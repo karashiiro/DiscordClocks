@@ -9,13 +9,13 @@ import (
 )
 
 // CreateMessageHandler curries the message creation delegate with the provided application resources.
-func CreateMessageHandler(resources *Resources) func(*discordgo.Session, *discordgo.MessageCreate) {
+func CreateMessageHandler(resources *models.Resources) func(*discordgo.Session, *discordgo.MessageCreate) {
 	return func(client *discordgo.Session, message *discordgo.MessageCreate) {
 		messageCreateInternal(client, message, resources)
 	}
 }
 
-func messageCreateInternal(client *discordgo.Session, message *discordgo.MessageCreate, resources *Resources) {
+func messageCreateInternal(client *discordgo.Session, message *discordgo.MessageCreate, resources *models.Resources) {
 	if message.Author.Bot {
 		return
 	}

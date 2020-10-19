@@ -1,4 +1,4 @@
-package application
+package models
 
 // ClockEntry is the basic information needed to run a channel clock.
 type ClockEntry struct {

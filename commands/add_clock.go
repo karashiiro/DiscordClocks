@@ -1,10 +1,8 @@
 package commands
 
-import (
-	"github.com/karashiiro/DiscordClocks/application"
-)
+import "github.com/bwmarrin/discordgo"
 
 // AddClock adds a clock to the clock registry.
-func AddClock(client *discordgo.Session, message *discordgo.MessageCreate, resources *application.Resources) {
+func AddClock(client *discordgo.Session, message *discordgo.MessageCreate, resources *models.Resources) {
 	//
 }

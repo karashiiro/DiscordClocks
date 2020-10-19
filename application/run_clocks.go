@@ -7,7 +7,7 @@ import (
 )
 
 // RunClocks runs the clocks.
-func RunClocks(client *discordgo.Session, resources *Resources) {
+func RunClocks(client *discordgo.Session, resources *models.Resources) {
 	for _, clock := range resources.Clocks {
 		channel, err := client.Channel(clock.ChannelID)
 		if err != nil {
