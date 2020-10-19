@@ -5,8 +5,8 @@ go 1.15
 require (
 	github.com/bwmarrin/discordgo v0.22.0
 	github.com/gorilla/websocket v1.4.2 // indirect
-	github.com/karashiiro/DiscordClocks/application v0.0.0-20201019180013-65b1cfc78ebc
-	github.com/karashiiro/DiscordClocks/commands v0.0.0-20201019180013-65b1cfc78ebc
+	github.com/karashiiro/DiscordClocks/application v0.0.0-20201019184040-69eb5742ef9d
+	github.com/karashiiro/DiscordClocks/commands v0.0.0-20201019184040-69eb5742ef9d
 	github.com/karashiiro/DiscordClocks/models v0.0.0-20201019183906-70279647a106
 	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897 // indirect
 	golang.org/x/sys v0.0.0-20201018230417-eeed37f84f13 // indirect
