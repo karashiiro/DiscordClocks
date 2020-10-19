@@ -8,6 +8,8 @@ github.com/karashiiro/DiscordClocks/application v0.0.0-20201019180013-65b1cfc78e
 github.com/karashiiro/DiscordClocks/application v0.0.0-20201019180013-65b1cfc78ebc/go.mod h1:MY4J3hoVPm3v4Y3hXveYzkMCPHOshOETC1WGr4Sbtys=
 github.com/karashiiro/DiscordClocks/commands v0.0.0-20201019180013-65b1cfc78ebc h1:g4iL5KYkt3ItGJsHR6/hROxJB6WcESpzQhRF2RGcubs=
 github.com/karashiiro/DiscordClocks/commands v0.0.0-20201019180013-65b1cfc78ebc/go.mod h1:oI2YabhZJob0tgIcT5wT5ZnBumOpLR2IdXMdnOjFRcg=
+github.com/karashiiro/DiscordClocks/models v0.0.0-20201019183906-70279647a106 h1:aE/9he83Fxgi1BJSZRKiR6r3YqKGcVaXdoDOJ1ZvorY=
+github.com/karashiiro/DiscordClocks/models v0.0.0-20201019183906-70279647a106/go.mod h1:JeMjowWy3aeo072vQWXCP1Au50/y94oBK9HMui8XtIs=
 golang.org/x/crypto v0.0.0-20181030102418-4d3f4d9ffa16 h1:y6ce7gCWtnH+m3dCjzQ1PCuwl28DDIc3VNnvY29DlIA=
 golang.org/x/crypto v0.0.0-20181030102418-4d3f4d9ffa16/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
