@@ -4,17 +4,18 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/karashiiro/DiscordClocks/application"
 	"github.com/karashiiro/DiscordClocks/commands"
 )
 
 // CreateMessageHandler curries the message creation delegate with the provided application resources.
-func CreateMessageHandler(resources *Resources) func(*discordgo.Session, *discordgo.MessageCreate) {
+func CreateMessageHandler(resources *application.Resources) func(*discordgo.Session, *discordgo.MessageCreate) {
 	return func(client *discordgo.Session, message *discordgo.MessageCreate) {
 		messageCreateInternal(client, message, resources)
 	}
 }
 
-func messageCreateInternal(client *discordgo.Session, message *discordgo.MessageCreate, resources *Resources) {
+func messageCreateInternal(client *discordgo.Session, message *discordgo.MessageCreate, resources *application.Resources) {
 	if message.Author.Bot {
 		return
 	}

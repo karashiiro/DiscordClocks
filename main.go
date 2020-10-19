@@ -8,18 +8,8 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/karashiiro/DiscordClocks/application"
 )
-
-// ClockEntry is the basic information needed to run a channel clock.
-type ClockEntry struct {
-	ChannelID string `json:"channelID"`
-	Timezone  string `json:"timezone"`
-}
-
-// Resources are shared throughout the application.
-type Resources struct {
-	Clocks []ClockEntry
-}
 
 func main() {
 	client, err := discordgo.New("Bot " + os.Getenv("DISCLOCKS_BOT_TOKEN"))
@@ -27,8 +17,8 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	resources := Resources{
-		Clocks: make([]ClockEntry, 1),
+	resources := application.Resources{
+		Clocks: make([]application.ClockEntry, 1),
 	}
 	messageCreate := CreateMessageHandler(&resources)
 	client.AddHandler(messageCreate)
