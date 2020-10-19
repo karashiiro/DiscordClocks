@@ -1,4 +1,4 @@
-package application
+package main
 
 import (
 	"log"
@@ -6,6 +6,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/karashiiro/DiscordClocks/commands"
+	"github.com/karashiiro/DiscordClocks/models"
 )
 
 // CreateMessageHandler curries the message creation delegate with the provided application resources.
