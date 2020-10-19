@@ -20,7 +20,7 @@ func main() {
 	resources := application.Resources{
 		Clocks: make([]application.ClockEntry, 1),
 	}
-	messageCreate := CreateMessageHandler(&resources)
+	messageCreate := application.CreateMessageHandler(&resources)
 	client.AddHandler(messageCreate)
 
 	if err = client.Open(); err != nil {
@@ -33,7 +33,7 @@ func main() {
 	}
 	fmt.Println("Logged in as", user.Username)
 
-	go runClocks(client, &resources)
+	go application.RunClocks(client, &resources)
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
