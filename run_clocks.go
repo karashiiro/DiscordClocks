@@ -1,9 +1,10 @@
-package application
+package main
 
 import (
 	"log"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/karashiiro/DiscordClocks/models"
 )
 
 // RunClocks runs the clocks.
