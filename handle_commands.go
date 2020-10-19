@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
@@ -20,16 +21,34 @@ func messageCreateInternal(client *discordgo.Session, message *discordgo.Message
 		return
 	}
 
-	// Command prefix
-	if message.Content[0] != '^' {
+	member, err := client.GuildMember(message.GuildID, message.Author.ID)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	roleOk := false
+	for _, role := range member.Roles {
+		for _, modRole := range resources.ModRoles {
+			if modRole == role {
+				roleOk = true
+				break
+			}
+		}
+	}
+	if !roleOk {
+		return
+	}
+
+	if message.Content[0:1] != resources.Prefix {
 		return
 	}
 
 	content := message.Content[1:]
 
 	if strings.HasPrefix(content, "addclock") {
-		commands.AddClock(resources)
+		commands.AddClock(client, message, resources)
 	} else if strings.HasPrefix(content, "removeclock") {
-		commands.RemoveClock(resources)
+		commands.RemoveClock(client, message, resources)
 	}
 }

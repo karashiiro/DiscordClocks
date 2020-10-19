@@ -5,6 +5,6 @@ import (
 )
 
 // AddClock adds a clock to the clock registry.
-func AddClock(resources *application.Resources) {
+func AddClock(client *discordgo.Session, message *discordgo.MessageCreate, resources *application.Resources) {
 	//
 }

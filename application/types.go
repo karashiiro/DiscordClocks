@@ -8,5 +8,7 @@ type ClockEntry struct {
 
 // Resources are shared throughout the application.
 type Resources struct {
-	Clocks []ClockEntry
+	Clocks   []ClockEntry `json:"clocks"`
+	ModRoles []string     `json:"mod_roles"`
+	Prefix   string       `json:"prefix"`
 }
