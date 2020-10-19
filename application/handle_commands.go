@@ -1,4 +1,4 @@
-package main
+package application
 
 import (
 	"log"
@@ -27,16 +27,7 @@ func messageCreateInternal(client *discordgo.Session, message *discordgo.Message
 		return
 	}
 
-	roleOk := false
-	for _, role := range member.Roles {
-		for _, modRole := range resources.ModRoles {
-			if modRole == role {
-				roleOk = true
-				break
-			}
-		}
-	}
-	if !roleOk {
+	if !rolesOk(member.Roles, resources.ModRoles) {
 		return
 	}
 
@@ -45,10 +36,24 @@ func messageCreateInternal(client *discordgo.Session, message *discordgo.Message
 	}
 
 	content := message.Content[1:]
+	args := strings.Split(content, " ")
 
 	if strings.HasPrefix(content, "addclock") {
-		commands.AddClock(client, message, resources)
+		commands.AddClock(client, message, args, resources)
 	} else if strings.HasPrefix(content, "removeclock") {
-		commands.RemoveClock(client, message, resources)
+		commands.RemoveClock(client, message, args, resources)
 	}
+}
+
+func rolesOk(memberRoles []string, modRoles []string) bool {
+	ok := false
+	for _, role := range memberRoles {
+		for _, modRole := range modRoles {
+			if modRole == role {
+				ok = true
+				break
+			}
+		}
+	}
+	return ok
 }

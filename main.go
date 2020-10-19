@@ -8,6 +8,7 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/karashiiro/DiscordClocks/application"
 	"github.com/karashiiro/DiscordClocks/models"
 )
 
@@ -17,10 +18,8 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	resources := models.Resources{
-		Clocks: make([]models.ClockEntry, 1),
-	}
-	messageCreate := CreateMessageHandler(&resources)
+	resources := models.LoadResources()
+	messageCreate := application.CreateMessageHandler(resources)
 	client.AddHandler(messageCreate)
 
 	if err = client.Open(); err != nil {
@@ -33,7 +32,7 @@ func main() {
 	}
 	fmt.Println("Logged in as", user.Username)
 
-	go RunClocks(client, &resources)
+	go application.RunClocks(client, resources)
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
