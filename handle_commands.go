@@ -5,16 +5,18 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/karashiiro/DiscordClocks/commands"
+	"github.com/karashiiro/DiscordClocks/models"
 )
 
 // CreateMessageHandler curries the message creation delegate with the provided application resources.
-func CreateMessageHandler(resources *Resources) func(*discordgo.Session, *discordgo.MessageCreate) {
+func CreateMessageHandler(resources *models.Resources) func(*discordgo.Session, *discordgo.MessageCreate) {
 	return func(client *discordgo.Session, message *discordgo.MessageCreate) {
 		messageCreateInternal(client, message, resources)
 	}
 }
 
-func messageCreateInternal(client *discordgo.Session, message *discordgo.MessageCreate, resources *Resources) {
+func messageCreateInternal(client *discordgo.Session, message *discordgo.MessageCreate, resources *models.Resources) {
 	if message.Author.Bot {
 		return
 	}
@@ -45,8 +47,8 @@ func messageCreateInternal(client *discordgo.Session, message *discordgo.Message
 	content := message.Content[1:]
 
 	if strings.HasPrefix(content, "addclock") {
-		AddClock(client, message, resources)
+		commands.AddClock(client, message, resources)
 	} else if strings.HasPrefix(content, "removeclock") {
-		RemoveClock(client, message, resources)
+		commands.RemoveClock(client, message, resources)
 	}
 }
