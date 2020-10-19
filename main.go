@@ -8,7 +8,6 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/karashiiro/DiscordClocks/models"
 )
 
 func main() {
@@ -17,8 +16,8 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	resources := models.Resources{
-		Clocks: make([]models.ClockEntry, 1),
+	resources := Resources{
+		Clocks: make([]ClockEntry, 1),
 	}
 	messageCreate := CreateMessageHandler(&resources)
 	client.AddHandler(messageCreate)
