@@ -4,7 +4,9 @@ Clocks for your Discord servers.
 ## Installation
 Make sure you have a bot token for the Discord API.
 
-Download the program and Go v1.15+, and run `go build` to create the executable. Alternatively, pick up the (possibly outdated, check the commit hash) pre-built Windows binary from [here](https://github.com/karashiiro/DiscordClocks/releases/latest).
+Download the program and Go v1.15+, install the dependencies, and run `go build` to create the executable.  Alternatively, pick up the (possibly outdated, check the commit hash) pre-built Windows binary from [here](https://github.com/karashiiro/DiscordClocks/releases/latest).
+
+Set the environment variable `DISCLOCKS_BOT_TOKEN` to your bot token.
 
 ## Configuration
 Set `mod_roles` in the configuration file generated on the first run to an array including role IDs authorized
