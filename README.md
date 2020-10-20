@@ -1,5 +1,7 @@
 # DiscordClocks
-Clocks for your Discord servers.
+Clocks for your Discord servers. Updates every five minutes due to API restrictions.
+
+![Screenshot](https://i.imgur.com/HaCt4I4.png)
 
 ## Installation
 Make sure you have a bot token for the Discord API.
