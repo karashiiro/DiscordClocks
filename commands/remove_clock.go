@@ -36,6 +36,7 @@ func RemoveClock(client *discordgo.Session, message *discordgo.MessageCreate, ar
 
 	resources.Save()
 
+	log.Println("Clock removed from channel", message.ChannelID)
 	if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<@%s>, the clock was removed!", message.Author.ID)); err != nil {
 		log.Println(err)
 	}

@@ -41,6 +41,7 @@ func AddClock(client *discordgo.Session, message *discordgo.MessageCreate, args 
 
 	resources.Save()
 
+	log.Println("Clock created on channel", message.ChannelID)
 	if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<@%s>, the clock was created! Please allow for up to five minutes for the clock to update.", message.Author.ID)); err != nil {
 		log.Println(err)
 	}
