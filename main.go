@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -30,7 +29,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println("Logged in as", user.Username)
+	log.Println("Logged in as", user.Username+"#"+user.Discriminator)
 
 	go application.RunClocks(client, resources)
 

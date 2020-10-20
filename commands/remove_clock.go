@@ -11,7 +11,7 @@ import (
 // RemoveClock removes a clock from the clock registry.
 func RemoveClock(client *discordgo.Session, message *discordgo.MessageCreate, args []string, resources *models.Resources) {
 	if len(args) < 1 {
-		if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<%s>, too few arguments!", message.Author.ID)); err != nil {
+		if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<@%s>, too few arguments!", message.Author.ID)); err != nil {
 			log.Println(err)
 		}
 		return
@@ -26,9 +26,9 @@ func RemoveClock(client *discordgo.Session, message *discordgo.MessageCreate, ar
 		}
 	}
 	if i != -1 {
-		splice(&resources.Clocks, i)
+		resources.Clocks = *splice(resources.Clocks, i)
 	} else {
-		if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<%s>, no clock exists for that channel!", message.Author.ID)); err != nil {
+		if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<@%s>, no clock exists for that channel!", message.Author.ID)); err != nil {
 			log.Println(err)
 		}
 		return
@@ -36,14 +36,14 @@ func RemoveClock(client *discordgo.Session, message *discordgo.MessageCreate, ar
 
 	resources.Save()
 
-	if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<%s>, the clock was removed!", message.Author.ID)); err != nil {
+	if _, err := client.ChannelMessageSend(message.ChannelID, fmt.Sprintf("<@%s>, the clock was removed!", message.Author.ID)); err != nil {
 		log.Println(err)
 	}
 }
 
-func splice(slice *[]models.ClockEntry, i int) {
-	newSlice := make([]models.ClockEntry, len(*slice)-1)
-	copy(newSlice, (*slice)[0:i])
-	copy(newSlice[i+1:], (*slice)[i+1:])
-	slice = &newSlice
+func splice(slice []models.ClockEntry, i int) *[]models.ClockEntry {
+	newSlice := make([]models.ClockEntry, len(slice)-1)
+	copy(newSlice, slice[0:i])
+	copy(newSlice[i:], slice[i+1:])
+	return &newSlice
 }

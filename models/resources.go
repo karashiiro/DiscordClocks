@@ -38,17 +38,9 @@ func (resources *Resources) Save() {
 // LoadResources loads the configuration file.
 func LoadResources() *Resources {
 	data, err := ioutil.ReadFile("clocks.json")
-	if err != nil {
-		log.Println(err)
-		return &Resources{
-			Clocks: make([]ClockEntry, 0),
-		}
-	}
-
-	if len(data) == 0 {
-		return &Resources{
-			Clocks: make([]ClockEntry, 0),
-		}
+	if err != nil || len(data) == 0 {
+		log.Println("Created new configuration data.")
+		return makeConfigDefaults()
 	}
 
 	out := Resources{}
@@ -59,4 +51,14 @@ func LoadResources() *Resources {
 	}
 
 	return &out
+}
+
+func makeConfigDefaults() *Resources {
+	resources := &Resources{
+		Clocks:   make([]ClockEntry, 0),
+		ModRoles: make([]string, 0),
+		Prefix:   "^",
+	}
+	resources.Save()
+	return resources
 }

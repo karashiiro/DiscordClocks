@@ -17,10 +17,20 @@ func RunClocks(client *discordgo.Session, resources *models.Resources) {
 
 	for {
 		for _, clock := range resources.Clocks {
-			now := time.Now()
+			loc, err := time.LoadLocation(clock.Timezone)
+			if err != nil {
+				log.Println(err)
+				continue
+			}
+
+			now := time.Now().In(loc)
 
 			minute := now.Minute()
-			hour := now.Hour()
+			hour := now.Hour() + 1
+			if hour > 12 {
+				hour -= 12
+			}
+
 			var clockEmoji string
 			if minute < 30 {
 				clockEmoji = clockFaces[hour-1]
@@ -28,7 +38,12 @@ func RunClocks(client *discordgo.Session, resources *models.Resources) {
 				clockEmoji = halfHourClockFaces[hour-1]
 			}
 
-			timeString := clockEmoji + " " + now.Format("h:mm A")
+			timeFormat := "3:04 PM"
+			if clock.TzCode == "" {
+				timeFormat += " MST"
+			}
+
+			timeString := clockEmoji + " " + now.Format(timeFormat)
 			if clock.TzCode != "" {
 				timeString += " " + clock.TzCode
 			}

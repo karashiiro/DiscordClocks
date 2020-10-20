@@ -36,7 +36,7 @@ func messageCreateInternal(client *discordgo.Session, message *discordgo.Message
 	}
 
 	content := message.Content[1:]
-	args := strings.Split(content, " ")
+	args := strings.Split(content, " ")[1:]
 
 	if strings.HasPrefix(content, "addclock") {
 		commands.AddClock(client, message, args, resources)
