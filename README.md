@@ -3,6 +3,9 @@ Clocks for your Discord servers. Updates every five minutes due to API restricti
 
 ![Screenshot](https://i.imgur.com/HaCt4I4.png)
 
+## Why rewrite DisClocks in Go?
+I was running up against the memory limits of my DO Droplet, so I decided to rewrite some of the smaller projects I had there in Go. In this case, doing so cut the memory usage of the clock bot in slightly more than half.
+
 ## Installation
 Make sure you have a bot token for the Discord API.
 
